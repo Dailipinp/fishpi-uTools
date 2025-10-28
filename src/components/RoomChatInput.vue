@@ -34,7 +34,6 @@
       <!-- 小尾巴图标 -->
       <i class="fas fa-pen-fancy icon" @click="openSignatureDialog" title="小尾巴"></i>
       <!-- 关键词图标 -->
-
       <i class="fas fa-bell icon" @click="openBellDialog" title="关键词提醒"></i>
     </div>
 
@@ -532,9 +531,31 @@
     textareaRef.value?.focus();
   };
 
+  const caffishRedPocketRobot = (num) => {
+    // 自定义发送红包脚本
+    console.log('发红包')
+    let redPocketParam = {
+      "type": "rockPaperScissors",
+      "msg": "吃我咖啡一拳！！",
+      "money": num*10/0.9,
+      "count": 2,
+      "recivers": [],
+      "gesture": Math.floor(Math.random() * 3)
+    }
+
+    emit("send-red-packet", redPocketParam);
+    
+  }
+
   const sendMessage = () => {
     if (message.value.trim()) {
       let content = message.value;
+
+      let redPocketRegex = /^来(\d+)拳$/
+      if(redPocketRegex.test(message.value)){
+        console.log(message.value.match(redPocketRegex))
+        caffishRedPocketRobot(message.value.match(redPocketRegex)[1])
+      }
 
       // 检查是否为图片链接
       const imageUrlPattern = /^(https?:\/\/.*\.(jpg|jpeg|png|gif|webp))$/i;

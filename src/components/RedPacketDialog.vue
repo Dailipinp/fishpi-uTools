@@ -258,6 +258,7 @@ const handleSend = async () => {
   isSending.value = true;
   try {
     emit("send", { ...form });
+    console.log({...form})
     handleClose();
   } finally {
     isSending.value = false;
