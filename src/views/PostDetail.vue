@@ -74,6 +74,8 @@
 
             <div v-for="comment in comments" :ref="setcommentRef" :key="comment.oId"
               :data-id="comment.commentOriginalCommentId" class="comment-item">
+              <div v-for="comment in comments" :key="comment.oId" class="comment-item">
+
               <div class="comment-header">
                 <img :src="comment.commentAuthorThumbnailURL" :alt="comment.commentAuthorName" class="comment-avatar" />
                 <div class="comment-info">
@@ -383,7 +385,6 @@
         // 更新响应式数据
         comments.value = sortedComments;
         console.log("评论数据:", comments.value);
-      });
       } else {
         commentError.value = new Error(response.msg || "获取评论失败");
       }
