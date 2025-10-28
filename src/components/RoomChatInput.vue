@@ -536,8 +536,8 @@
     console.log('发红包')
     let redPocketParam = {
       "type": "rockPaperScissors",
-      "msg": "吃我咖啡一拳！！",
-      "money": num*10/0.9,
+      "msg": "吃我咖啡啡一拳！！",
+      "money": Math.ceil(num*10/0.900),
       "count": 2,
       "recivers": [],
       "gesture": Math.floor(Math.random() * 3)
