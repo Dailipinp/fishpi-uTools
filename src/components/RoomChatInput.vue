@@ -547,11 +547,14 @@
     
   }
 
+  // 发送信息
   const sendMessage = () => {
     if (message.value.trim()) {
       let content = message.value;
 
-      let redPocketRegex = /^来(\d+)拳$/
+      ///固定字符串的正则：^来(\d+)拳$/
+
+      let redPocketRegex = /.*(\d+)拳.*/
       if(redPocketRegex.test(message.value)){
         console.log(message.value.match(redPocketRegex))
         caffishRedPocketRobot(message.value.match(redPocketRegex)[1])
