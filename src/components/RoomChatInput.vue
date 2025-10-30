@@ -533,10 +533,9 @@
 
   const caffishRedPocketRobot = (num) => {
     // 自定义发送红包脚本
-    console.log('发红包')
     let redPocketParam = {
       "type": "rockPaperScissors",
-      "msg": "吃我咖啡啡一拳！！",
+      "msg": `吃我咖啡啡${num}拳！！`,
       "money": Math.ceil(num*10/0.900),
       "count": 2,
       "recivers": [],
@@ -555,9 +554,10 @@
       ///固定字符串的正则：^来(\d+)拳$/
 
       let redPocketRegex = /.*(\d+)拳.*/
+      let redPocketNumRegex = /\d+/
+
       if(redPocketRegex.test(message.value)){
-        console.log(message.value.match(redPocketRegex))
-        caffishRedPocketRobot(message.value.match(redPocketRegex)[1])
+        caffishRedPocketRobot(message.value.match(redPocketNumRegex)[0])
       }
 
       // 检查是否为图片链接
